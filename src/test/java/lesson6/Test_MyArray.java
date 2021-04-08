@@ -9,9 +9,14 @@ import org.junit.jupiter.api.DisplayName;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class TestClassMyArray {
+public class Test_MyArray {
+    MyArray myArray;
 
-    MyArray myArray = new MyArray();
+    @Before
+    public void init(){
+        myArray = new MyArray();
+    }
+
 
     @Test
     @DisplayName ("Передан null массив")
@@ -30,6 +35,14 @@ public class TestClassMyArray {
     public void currentData() {
         int[] arr = {4,5,5,6,4,3,2,2,1};
         int[] newArr = {3,2,2,1};
+        Assert.assertArrayEquals(newArr, myArray.returnNewArray(arr));
+    }
+
+    @Test
+    @DisplayName("Тест должен упасть, т.к. сравнение с заведомо неверным результатом")
+    public void currentData1() {
+        int[] arr = {4,5,5,6,4,3,2,2,1};
+        int[] newArr = {5,5,6,4,3,2,2,1};
         Assert.assertArrayEquals(newArr, myArray.returnNewArray(arr));
     }
 
